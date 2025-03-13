@@ -8,3 +8,4 @@ figure/*
 data/*
 !data/.gitkeep
 cache/*
+artifacts/*
