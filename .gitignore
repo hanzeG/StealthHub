@@ -1,0 +1,10 @@
+node_modules
+.target
+circuit_input/*
+!circuit_input/.gitkeep
+.ptau
+figure/*
+!figure/.gitkeep
+data/*
+!data/.gitkeep
+cache/*

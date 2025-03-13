@@ -1,0 +1,45 @@
+{
+  "name": "circom-stealth-address",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/**/*.js'",
+    "circom_mod_pow": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/circom_mod_pow.test.js'",
+    "primality": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/primality.test.js'",
+    "poseidon2": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/poseidon2.test.js'",
+    "circom_full_1024_const_65537": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/circom_full_1024_const_65537.test.js'",
+    "circom_full_2048_const_65537": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/circom_full_2048_const_65537.test.js'",
+    "circom_full_4096_const_65537": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/circom_full_4096_const_65537.test.js'",
+    "circom_multi_mt": "NODE_OPTIONS=--max_old_space_size=56000 mocha -r ts-node/register 'test/circom_multi_mt.test.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/chai": "^4.3.0",
+    "@types/expect": "^24.3.0",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "circom_tester": "0.0.19",
+    "ethers": "^6.13.5",
+    "hardhat": "^2.22.18",
+    "mocha": "^9.1.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@noble/secp256k1": "^2.2.3",
+    "bigint-crypto-utils": "^3.3.0",
+    "bn.js": "^5.2.1",
+    "circomlibjs": "^0.1.7",
+    "eccrypto-js": "^5.4.0",
+    "ffjavascript": "^0.3.1",
+    "poseidon2": "^0.4.2"
+  }
+}
