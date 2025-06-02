@@ -18,43 +18,7 @@ The remainder of this document provides detailed installation instructions, test
 
 ---
 
-## 2. Repository Structure
-
-After cloning, the repository has the following structure (directories requiring submodule initialisation are marked with an asterisk):
-
-```
-StealthHub/
-├── circuits/
-│   ├── mixer/                # Circom circuits for ZKP mixer (joinsplit, nullifiers, commitments)
-│   ├── stealth_address/      # Circom circuits for stealth address (RSA and pairing-based)
-│   └── utils/                # Shared subcircuits (hash functions, bit decomposition, Merkle proof)
-├── contracts/
-│   ├── SH_I/                 # SH-I (IMT) Solidity contracts and tests
-│   ├── SH_M/                 # SH-M (MMR) Solidity contracts and tests
-│   └── SH_A/                 # SH-A (off-chain aggregation) Solidity contracts and tests
-├── data/                     # Collected gas measurement outputs (JSON/CSV)
-├── scripts/                  # Hardhat scripts for on-chain gas benchmarking
-│   ├── test1.js              # IMT (height 12) vs MMR insertion gas benchmarks
-│   ├── test2.js              # IMT (height 16) vs MMR insertion gas benchmarks
-│   ├── test3.js … test8.js   # Deposit and shielded transfer benchmarks for SH-I, SH-M, SH-A
-│   └── test9.js              # Deployment gas comparison across different tree heights
-├── scripts_fig/              # Python scripts for data visualisation
-│   └── generate_figures.py   # Aggregate plotting script (reads data/*.csv, outputs figure/)
-├── umbra-protocol/*          # Submodule for Umbra comparison (prepare and scan steps)
-├── test/                     # Circom ZKP circuit tests (Mocha/Chai)
-│   ├── mixer.test.js         # Mixer circuit end-to-end tests
-│   ├── stealth.test.js       # Stealth address circuit tests
-│   ├── poseidon2.test.js     # Poseidon2 hash function circuit tests
-│   └── circom_full_4096_const_65537.test.js # RSA-based StealthHub end-to-end flow
-├── run_groth16.sh            # Bash script to measure R1CS constraints for all Circom circuits
-├── package.json              # NPM scripts and dependencies
-├── hardhat.config.js         # Hardhat configuration (Solidity versions, networks, plugins)
-└── README.md                 # ← This file (updated to reflect academic style and structure)
-```
-
----
-
-## 3. Prerequisites
+## 2. Prerequisites
 
 Before proceeding, ensure that your environment meets the following requirements:
 
@@ -71,9 +35,9 @@ It is assumed that you are working on a Unix-like environment (Linux or macOS). 
 
 ---
 
-## 4. Installation and Setup
+## 3. Installation and Setup
 
-### 4.1 Clone the Repository
+### 3.1 Clone the Repository
 
 Clone the StealthHub repository and install JavaScript dependencies:
 
@@ -88,7 +52,7 @@ cd StealthHub
 npm install
 ```
 
-### 4.2 Initialise Git Submodules
+### 3.2 Initialise Git Submodules
 
 Some components require external repositories (for example, the Umbra comparison). To initialise and update all submodules, run:
 
@@ -100,7 +64,7 @@ After this command, you should see a new directory `umbra-protocol/` (and any ot
 
 ---
 
-## 5. On-Chain Gas Benchmarking
+## 4. On-Chain Gas Benchmarking
 
 This section describes how to measure on-chain gas costs for various operations in StealthHub. All gas metrics will be saved as JSON or CSV in the `data/` directory.
 
@@ -114,7 +78,7 @@ npx hardhat node
 
 This will spawn a local Ethereum node at `http://127.0.0.1:8545` with pre-funded accounts. Keep this running for the duration of the gas tests.
 
-### 5.2 Compile Contracts
+### 4.2 Compile Contracts
 
 In a second terminal (still within the `StealthHub` directory), compile all Solidity contracts:
 
@@ -124,7 +88,7 @@ npx hardhat compile
 
 Compiled artifacts appear under `artifacts/` by default.
 
-### 5.3 Run Gas Measurement Scripts
+### 4.3 Run Gas Measurement Scripts
 
 Each script under `scripts/` benchmarks a specific scenario. All scripts assume the Hardhat node from Section 5.1 is active. The results are written to the `data/` directory.
 
@@ -182,7 +146,7 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
 ---
 
-## 6. Zero-Knowledge Circuit Testing
+## 5. Zero-Knowledge Circuit Testing
 
 All Circom circuit tests reside in the `test/` directory. Test instructions are defined in `package.json`. The following commands illustrate typical workflows:
 
@@ -214,14 +178,14 @@ Each test suite compiles the corresponding circuit, performs a trusted setup (po
 
 ---
 
-## 7. Constraint Measurement with Groth16
+## 6. Constraint Measurement with Groth16
 
 To quantify circuit complexity, measure the number of R1CS constraints for each circuit. This step does _not_ include proof generation time, memory usage or verifier time. External benchmark repositories provide those additional metrics:
 
 - [hanzeG/snarkjs_bench](https://github.com/hanzeG/snarkjs_bench)  
 - [hanzeG/circom-rsa-zkmixer](https://github.com/hanzeG/circom-rsa-zkmixer)
 
-### 7.1 Run the Constraint Counting Script
+### 6.1 Run the Constraint Counting Script
 
 A convenience script, `run_groth16.sh`, iterates through all uncommented `.circom` files and calculates the constraint count using SnarkJS:
 
@@ -241,11 +205,11 @@ You may modify `run_groth16.sh` to include or exclude specific circuits by comme
 
 ---
 
-## 8. Data Visualisation
+## 7. Data Visualisation
 
 All collected gas measurements (Section 5) and constraint counts (Section 7) can be visualised using Python scripts in `scripts_fig/`. The primary entry point is `generate_figures.py`. It reads CSV/JSON files from `data/` and generates publication-quality plots in `figure/`.
 
-### 8.1 Install Python Dependencies
+### 7.1 Install Python Dependencies
 
 Ensure that you have installed the following packages:
 
@@ -255,7 +219,7 @@ pip install matplotlib pandas seaborn numpy
 
 The exact dependencies can be found at the top of `scripts_fig/generate_figures.py`.
 
-### 8.2 Run the Visualisation Script
+### 7.2 Run the Visualisation Script
 
 ```bash
 python3 scripts_fig/generate_figures.py
@@ -272,7 +236,7 @@ Each figure is saved with a descriptive filename. You may modify the script to a
 
 ---
 
-## 9. Umbra Protocol Comparison
+## 8. Umbra Protocol Comparison
 
 The `umbra-protocol/` submodule contains benchmarks comparing StealthHub’s prepare and scan operations with those of the Umbra SAP. To reproduce this comparison:
 
