@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
-contract RightMerkleTree {
+contract Mmr {
     address public poseidon2Contract;
     bytes32 public initRoot;
     bytes32 public currentRoot;

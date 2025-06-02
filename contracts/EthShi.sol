@@ -1,24 +1,18 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./StealthHub.sol";
+import "./Shi.sol";
 
-contract ETHStealthHub is StealthHub {
+contract EthShi is Shi {
     constructor(
-        IVerifier _verifier1,
+        // IVerifier _verifier1,
         IVerifier _verifier2,
+        IVerifier _verifier3,
         address _poseidon2Contract,
-        bytes32 _initRoot
-    ) StealthHub(_verifier1, _verifier2, _poseidon2Contract, _initRoot) {}
+        uint32 _merkleTreeHeight
+    ) Shi(_verifier2, _verifier3, _poseidon2Contract, _merkleTreeHeight) {}
 
     function _processDeposit(uint256 _asset) internal override {
-        require(
-            msg.value == _asset,
-            "Please send correct amount of asset along with transaction"
-        );
-    }
-
-    function _processShieldedTransfer(uint256 _asset) internal override {
         require(
             msg.value == _asset,
             "Please send correct amount of asset along with transaction"

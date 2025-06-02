@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
-contract IncrementalMerkleTree {
+contract Imt {
     address public poseidon2Contract;
 
     uint256 public constant FIELD_SIZE =

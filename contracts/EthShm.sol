@@ -1,18 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./IMCSH.sol";
+import "./Shm.sol";
 
-contract ETHIMCSH is IMCSH {
+contract EthShm is Shm {
     constructor(
-        // IVerifier _verifier1,
+        IVerifier _verifier1,
         IVerifier _verifier2,
-        IVerifier _verifier3,
         address _poseidon2Contract,
-        uint32 _merkleTreeHeight
-    ) IMCSH(_verifier2, _verifier3, _poseidon2Contract, _merkleTreeHeight) {}
+        bytes32 _initRoot
+    ) Shm(_verifier1, _verifier2, _poseidon2Contract, _initRoot) {}
 
     function _processDeposit(uint256 _asset) internal override {
+        require(
+            msg.value == _asset,
+            "Please send correct amount of asset along with transaction"
+        );
+    }
+
+    function _processShieldedTransfer(uint256 _asset) internal override {
         require(
             msg.value == _asset,
             "Please send correct amount of asset along with transaction"
