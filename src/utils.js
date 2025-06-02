@@ -11,7 +11,8 @@ async function poseidon_hash(preimage) {
     return hash;
 }
 
-async function poseidon2Hash(preimage) {
+async function poseidon2_hash(preimage) {
+    console.log(`Poseidon2 hashing preimage: ${preimage}`);
     const prime = await getCurveFromName("bn128", true);
     const F = new F1Field(prime.r);
     const poseidon2 = new Poseidon2(
@@ -128,7 +129,7 @@ module.exports = {
     bigint_to_array,
     generateRabinMillerInput,
     poseidon_hash,
-    poseidon2Hash,
+    poseidon2_hash,
     bigintToBitsArray,
     rotateRight,
     swap
