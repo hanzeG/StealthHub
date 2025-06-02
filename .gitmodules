@@ -4,6 +4,3 @@
 [submodule "circom-ecdsa"]
 	path = circom-ecdsa
 	url = https://github.com/0xPARC/circom-ecdsa.git
-[submodule "umbra-protocol"]
-	path = umbra-protocol
-	url = https://github.com/ScopeLift/umbra-protocol.git
