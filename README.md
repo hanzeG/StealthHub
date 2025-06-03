@@ -54,10 +54,12 @@ After updating all submodules, each submodule has its own dependencies that must
 1. **Umbra Submodule**  
 
     ```bash
-    cd umbra-protocol
-    # run these commands from workspace root!
+    cd umbra-protocol # please run all these commands from the umbra-protocol workspace root!
+
     cp contracts-core/.env.example contracts-core/.env # please edit the .env with your own environment variable values
+    
     yarn install
+    
     cp umbra-js/.env.example umbra-js/.env # please edit the .env with your own environment variable values
     ```
 
@@ -65,8 +67,10 @@ After updating all submodules, each submodule has its own dependencies that must
 
 2. **Other Submodules (if present)**  
     Replace `<submodule-name>` with each submodule directory name, then run:
+
     ```bash
     cd ../<submodule-name>
+    
     npm install
     ```
     This installs all npm dependencies for each additional submodule.
@@ -118,6 +122,7 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
     ```bash
     # Height 12
     npx hardhat run scripts/test1.js --network localhost
+
     # Height 16
     npx hardhat run scripts/test2.js --network localhost
     ```
@@ -129,15 +134,27 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
     ```bash
     # SH-I (StealthHub base on IMT, IMT height 31, record first 8 transactions)
+    
+    # deposit
     npx hardhat run scripts/test3.js --network localhost
+    
+    # shielded transfer
     npx hardhat run scripts/test4.js --network localhost
 
     # SH-M (StealthHub base on MMR, record first 2^16 transactions)
+
+    # deposit
     npx hardhat run scripts/test5.js --network localhost
+    
+    # shielded transfer
     npx hardhat run scripts/test6.js --network localhost
 
     # SH-A (StealthHub base on off-chain aggregation and MMR, record first 2^16 transactions)
+    
+    # deposit
     npx hardhat run scripts/test7.js --network localhost
+    
+    # shielded transfer
     npx hardhat run scripts/test8.js --network localhost
     ```
 
