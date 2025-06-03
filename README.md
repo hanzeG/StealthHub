@@ -18,9 +18,9 @@ This repository presents **StealthHub**, a protocol combining Zero-Knowledge Pro
 
 ### 1.1 Preparation
 
-Download Circom following the instructions at [installing Circom](https://docs.circom.io/getting-started/installation/).
+1. Download Circom following the instructions at [installing Circom](https://docs.circom.io/getting-started/installation/).
 
-Download SnarkJS: `npm install -g snarkjs`
+2. Download SnarkJS: `npm install -g snarkjs`
 
 ### 1.2 Clone the Repository
 
