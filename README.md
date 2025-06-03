@@ -79,13 +79,11 @@ After updating all submodules, each submodule has its own dependencies that must
     If any submodule contains its own nested submodules, ensure they are fully initialised:
     ```bash
     git submodule update --init --recursive
-    ```
-    Run this command from the root of each submodule as needed to pull in any nested repositories.
 
-    After completing these steps, return to the project root before proceeding to on-chain benchmarking or circuit tests:
-    ```bash
+    # return to the project root before proceeding to on-chain benchmarking or circuit tests
     cd ../..
     ```
+    Run this command from the root of each submodule as needed to pull in any nested repositories.
 
 ---
 
@@ -223,12 +221,12 @@ Ensure that you have installed the following packages:
 pip install matplotlib pandas seaborn numpy
 ```
 
-The exact dependencies can be found at the top of `scripts_fig/xxx.py`.
+The exact dependencies can be found at the top of `scripts_fig/<script-name>`.
 
 ### 5.2 Run the Visualisation Script
 
 ```bash
-python3 scripts_fig/xxx.py
+python3 scripts_fig/<script-name>
 ```
 
 ---
@@ -241,13 +239,16 @@ The `umbra-protocol/` submodule contains benchmarks comparing StealthHub’s pre
 
 ```bash
 cd umbra-js
+
 # Ensure you have created a .env file with the required environment variables:
 cat << 'EOF' > .env
 BASE_URL="https://your_rpc_url"
 MNEMONIC="your_mnemonic_here"
 ETHERSCAN_API_KEY="your_etherscan_api_key"
 EOF
+
 npm install
+
 npm run test-b
 ```
 
