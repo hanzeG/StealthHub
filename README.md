@@ -16,7 +16,13 @@ This repository presents **StealthHub**, a protocol combining Zero-Knowledge Pro
 
 ## 1. Installation and Setup
 
-### 1.1 Clone the Repository
+### 1.1 Preparation
+
+Download Circom following the instructions at [installing Circom](https://docs.circom.io/getting-started/installation/).
+
+Download SnarkJS: `npm install -g snarkjs`
+
+### 1.2 Clone the Repository
 
 Clone the StealthHub repository and install JavaScript dependencies:
 
@@ -27,17 +33,11 @@ git clone https://github.com/hanzeG/StealthHub.git
 # Change into the project folder
 cd StealthHub
 
-# Install all npm dependencies (Hardhat, Mocha, Chai, etc.)
+# Install all npm dependencies (Mocha, Chai, etc.)
 npm install
-
-# Download Circom
-Follow the instructions at [installing Circom](https://docs.circom.io/getting-started/installation/).
-
-# Download SnarkJS: 
-`npm install -g snarkjs`
 ```
 
-### 1.2 Initialise Git Submodules
+### 1.3 Initialise Git Submodules
 
 Some components require external repositories (for example, the Umbra comparison). To initialise and update all submodules, run:
 
