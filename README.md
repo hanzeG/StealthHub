@@ -234,6 +234,4 @@ npm install
 npm run test-b
 ```
 
-The script `test-b` executes benchmark routines comparing the runtime of Umbra’s `prepare()` and `scan()` functions for the "announcements" with StealthHub’s analogous operations.  
-
-```
+The script `test-b` executes benchmark routines comparing the runtime of Umbra’s `prepare()` and `scan()` functions for the "announcements" with StealthHub’s analogous operations.
