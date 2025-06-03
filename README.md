@@ -53,35 +53,35 @@ After updating all submodules, each submodule has its own dependencies that must
 
 1. **Umbra Submodule**  
 
-```bash
-cd umbra-protocol
-# run these commands from workspace root!
-cp contracts-core/.env.example contracts-core/.env # please edit the .env with your own environment variable values
-yarn install
-cp umbra-js/.env.example umbra-js/.env # please edit the .env with your own environment variable values
-```
+    ```bash
+    cd umbra-protocol
+    # run these commands from workspace root!
+    cp contracts-core/.env.example contracts-core/.env # please edit the .env with your own environment variable values
+    yarn install
+    cp umbra-js/.env.example umbra-js/.env # please edit the .env with your own environment variable values
+    ```
 
-This command installs all Yarn dependencies required by the Umbra comparison.
+    This command installs all Yarn dependencies required by the Umbra comparison.
 
 2. **Other Submodules (if present)**  
-Replace `<submodule-name>` with each submodule directory name, then run:
-```bash
-cd ../<submodule-name>
-npm install
-```
-This installs all npm dependencies for each additional submodule.
+    Replace `<submodule-name>` with each submodule directory name, then run:
+    ```bash
+    cd ../<submodule-name>
+    npm install
+    ```
+    This installs all npm dependencies for each additional submodule.
 
 3. **Nested Submodules**  
-If any submodule contains its own nested submodules, ensure they are fully initialised:
-```bash
-git submodule update --init --recursive
-```
-Run this command from the root of each submodule as needed to pull in any nested repositories.
+    If any submodule contains its own nested submodules, ensure they are fully initialised:
+    ```bash
+    git submodule update --init --recursive
+    ```
+    Run this command from the root of each submodule as needed to pull in any nested repositories.
 
-After completing these steps, return to the project root before proceeding to on-chain benchmarking or circuit tests:
-```bash
-cd ../..
-```
+    After completing these steps, return to the project root before proceeding to on-chain benchmarking or circuit tests:
+    ```bash
+    cd ../..
+    ```
 
 ---
 
@@ -115,43 +115,43 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
 1. **IMT vs MMR Insertion (Heights 12 & 16):**
 
-```bash
-# Height 12
-npx hardhat run scripts/test1.js --network localhost
-# Height 16
-npx hardhat run scripts/test2.js --network localhost
-```
+    ```bash
+    # Height 12
+    npx hardhat run scripts/test1.js --network localhost
+    # Height 16
+    npx hardhat run scripts/test2.js --network localhost
+    ```
 
-- `test1.js`: Inserts leaves into an IMT of height 12, recording gas per insertion; also computes gas per insertion in a comparable MMR of height 12.  
-- `test2.js`: Same procedure for an IMT of height 16 and its corresponding MMR.  
+    - `test1.js`: Inserts leaves into an IMT of height 12, recording gas per insertion; also computes gas per insertion in a comparable MMR of height 12.  
+    - `test2.js`: Same procedure for an IMT of height 16 and its corresponding MMR.  
 
 2. **Deposit & Shielded Transfer Gas Costs (SH-I, SH-M, SH-A):**
 
-```bash
-# SH-I (StealthHub base on IMT, IMT height 31, record first 8 transactions)
-npx hardhat run scripts/test3.js --network localhost
-npx hardhat run scripts/test4.js --network localhost
+    ```bash
+    # SH-I (StealthHub base on IMT, IMT height 31, record first 8 transactions)
+    npx hardhat run scripts/test3.js --network localhost
+    npx hardhat run scripts/test4.js --network localhost
 
-# SH-M (StealthHub base on MMR, record first 2^16 transactions)
-npx hardhat run scripts/test5.js --network localhost
-npx hardhat run scripts/test6.js --network localhost
+    # SH-M (StealthHub base on MMR, record first 2^16 transactions)
+    npx hardhat run scripts/test5.js --network localhost
+    npx hardhat run scripts/test6.js --network localhost
 
-# SH-A (StealthHub base on off-chain aggregation and MMR, record first 2^16 transactions)
-npx hardhat run scripts/test7.js --network localhost
-npx hardhat run scripts/test8.js --network localhost
-```
+    # SH-A (StealthHub base on off-chain aggregation and MMR, record first 2^16 transactions)
+    npx hardhat run scripts/test7.js --network localhost
+    npx hardhat run scripts/test8.js --network localhost
+    ```
 
-- **test3.js** / **test4.js**: SH-I deposit and shielded transfer gas costs for the first 8 transactions (differences become negligible after initial deposits in an IMT of height 31).  
-- **test5.js** / **test6.js**: SH-M deposit and shielded transfer gas costs for the first 2^16 transactions.  
-- **test7.js** / **test8.js**: SH-A deposit and shielded transfer gas costs for the first 2^16 transactions.  
+    - **test3.js** / **test4.js**: SH-I deposit and shielded transfer gas costs for the first 8 transactions (differences become negligible after initial deposits in an IMT of height 31).  
+    - **test5.js** / **test6.js**: SH-M deposit and shielded transfer gas costs for the first 2^16 transactions.  
+    - **test7.js** / **test8.js**: SH-A deposit and shielded transfer gas costs for the first 2^16 transactions.  
 
 3. **Deployment Gas Comparison (Various Tree Heights):**
 
-```bash
-npx hardhat run scripts/test9.js --network localhost
-```
+    ```bash
+    npx hardhat run scripts/test9.js --network localhost
+    ```
 
-- **test9.js**: Deploys IMT-based and MMR-based contracts at heights 12, 16 and 31, recording the gas cost for each deployment.  
+    - **test9.js**: Deploys IMT-based and MMR-based contracts at heights 12, 16 and 31, recording the gas cost for each deployment.  
 
 ---
 
