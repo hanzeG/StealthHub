@@ -27,8 +27,14 @@ git clone https://github.com/hanzeG/StealthHub.git
 # Change into the project folder
 cd StealthHub
 
-# Install all npm dependencies (Hardhat, Mocha, Chai, SnarkJS, Circom, etc.)
+# Install all npm dependencies (Hardhat, Mocha, Chai, etc.)
 npm install
+
+# Download Circom
+Follow the instructions at [installing Circom](https://docs.circom.io/getting-started/installation/).
+
+# Download SnarkJS: 
+`npm install -g snarkjs`
 ```
 
 ### 1.2 Initialise Git Submodules
