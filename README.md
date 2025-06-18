@@ -47,13 +47,13 @@ git submodule update --init --recursive
 
 After this command, you should see a new directory `umbra-protocol/` (and any other submodules) populated with its own files.
 
-### 1.3 Initialise Submodule Dependencies
+### 1.4 Initialise Submodule Dependencies
 
 After updating all submodules, each submodule has its own dependencies that must be installed. Perform the following steps:
 
 1. **Umbra Submodule**  
 
-Please run all these commands from the umbra-protocol workspace root and edit the .env with your own environment variable values.
+    Please run all these commands from the umbra-protocol workspace root and edit the .env with your own environment variable values.
 
     ```bash
     cd umbra-protocol
@@ -63,7 +63,7 @@ Please run all these commands from the umbra-protocol workspace root and edit th
     cp contracts-core/.env.example contracts-core/.env
     ```
 
-    ```bash
+    ```dotenv
     MNEMONIC=here is where your twelve words mnemonic should be put my friend
     DEPLOY_GSN=false
     ETHERSCAN_VERIFICATION_API_KEY="YOUR_API_KEY"
@@ -82,7 +82,7 @@ Please run all these commands from the umbra-protocol workspace root and edit th
     cp umbra-js/.env.example umbra-js/.env
     ```
 
-    ```bash
+    ```dotenv
     cat << 'EOF' > .env
     ETHERSCAN_API_KEY=yourEtherscanApiKey
     OPTIMISTIC_ETHERSCAN_API_KEY=yourOptimisticEtherscanApiKey
