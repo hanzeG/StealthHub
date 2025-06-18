@@ -4,7 +4,7 @@ This repository presents **StealthHub**, a protocol combining Zero-Knowledge Pro
 
 - **Circom-based ZKP implementations**: ZK circuits developed in Circom for Poseidon2 hash functions, UTXO circuits using the Groth16 proving system (SnarkJS) and encryption/ decryption circuits for RSA-based constructions.
 - **JavaScript unit tests**: A test suite (Mocha/Chai) that verifies circuit correctness, as well as end-to-end deposit and withdrawal operations across different implementations.
-- **SnarkJS Groth16 performance scripts**: Scripts that measure R1CS constraints (note that proving time, verifier time, and memory measurements (refer to `Figure 12` in the preprint) are provided in external benchmark repositories: [hanzeG/snarkjs_bench](https://github.com/hanzeG/snarkjs_bench)).
+- **SnarkJS Groth16 performance scripts**: Scripts that measure R1CS constraints (note that proving time, verifier time, and memory measurements (refer to `Figure 12` in the preprint) are provided in external benchmark repositories: [hanzeG/snarkjs_bench](https://github.com/hanzeG/snarkjs_bench).
 - **On-chain smart contract implementations**:
   - **SH-I**: Incremental Merkle Tree (IMT) – based implementation
   - **SH-M**: Merkle Mountain Range (MMR) – based implementation
@@ -198,11 +198,11 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
     - **test9.js**: Deploys IMT-based and MMR-based contracts at heights 12, 16 and 31, recording the gas cost for each deployment.
     - In the prerint (see `Table 2`), we deployed these contracts on testnet directily, please refer to the transactions on BNB Testnet below:
-      - IMT height 31: `0x49b8c1af615fea62875aa3813c3da73a7c19bd9011934b8233ff535bfd6e2df3`
-      - IMT height 16: `0xa5c11b65d96ebb0e182124bcd1cadfe317f5da95f1ea620bc21de9f5b5094fb3`
-      - IMT height 8: `0xbf408dae681334b7797d9c2b78391bb141f881bf5208ebe9df40c0cd988036a3`
-      - IMT height 4: `0x7b7848bea39423d8ce8ad813b1bf3b4c135e1fe68e539c256c610601b127401a`
-      - MMR: `0xe0ae9482bbea237964e11c73f67d09dcd720c9608158e95dd64f44cb74580444`
+      - IMT height 31: [`0x49b8c1af615fea62875aa3813c3da73a7c19bd9011934b8233ff535bfd6e2df3`](https://testnet.bscscan.com/tx/0x49b8c1af615fea62875aa3813c3da73a7c19bd9011934b8233ff535bfd6e2df3)
+      - IMT height 16: [`0xa5c11b65d96ebb0e182124bcd1cadfe317f5da95f1ea620bc21de9f5b5094fb3`](https://testnet.bscscan.com/tx/0xa5c11b65d96ebb0e182124bcd1cadfe317f5da95f1ea620bc21de9f5b5094fb3)
+      - IMT height 8: [`0xbf408dae681334b7797d9c2b78391bb141f881bf5208ebe9df40c0cd988036a3`](https://testnet.bscscan.com/tx/0xbf408dae681334b7797d9c2b78391bb141f881bf5208ebe9df40c0cd988036a3)
+      - IMT height 4: [`0x7b7848bea39423d8ce8ad813b1bf3b4c135e1fe68e539c256c610601b127401a`](https://testnet.bscscan.com/tx/0x7b7848bea39423d8ce8ad813b1bf3b4c135e1fe68e539c256c610601b127401a)
+      - MMR: [`0xe0ae9482bbea237964e11c73f67d09dcd720c9608158e95dd64f44cb74580444`](https://testnet.bscscan.com/tx/0xe0ae9482bbea237964e11c73f67d09dcd720c9608158e95dd64f44cb74580444)
 
 ---
 
