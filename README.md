@@ -26,15 +26,16 @@ This repository presents **StealthHub**, a protocol combining Zero-Knowledge Pro
 
 Clone the StealthHub repository and install JavaScript dependencies:
 
+Clone the StealthHub repository
+
 ```bash
-# Clone the StealthHub repository
 git clone https://github.com/hanzeG/StealthHub.git
+```
 
-# Change into the project folder
-cd StealthHub
+Change into the project folder and install all npm dependencies (Mocha, Chai, etc.)
 
-# Install all npm dependencies (Mocha, Chai, etc.)
-npm install
+```bash
+cd StealthHub && npm install
 ```
 
 ### 1.3 Initialise Git Submodules
@@ -56,11 +57,7 @@ After updating all submodules, each submodule has its own dependencies that must
     Please run all these commands from the umbra-protocol workspace root and edit the .env with your own environment variable values.
 
     ```bash
-    cd umbra-protocol
-    ```
-    
-    ```bash
-    cp contracts-core/.env.example contracts-core/.env
+    cd umbra-protocol && cp contracts-core/.env.example contracts-core/.env
     ```
 
     ```dotenv
@@ -75,11 +72,7 @@ After updating all submodules, each submodule has its own dependencies that must
     ```
     
     ```bash
-    cd umbra-js
-    ```
-
-    ```bash
-    cp umbra-js/.env.example umbra-js/.env
+    cd umbra-js && cp umbra-js/.env.example umbra-js/.env
     ```
 
     ```dotenv
@@ -103,25 +96,11 @@ After updating all submodules, each submodule has its own dependencies that must
     npm install
     ```
 
-1. **Other Submodules (if present)**  
-    Replace `<submodule-name>` with each submodule directory name, then run:
-
+2. **CircomLib**  
+   
     ```bash
-    cd ../<submodule-name>
-    
-    npm install
+    cd ../circom-ecdsa && npm install
     ```
-    This installs all npm dependencies for each additional submodule.
-
-2. **Nested Submodules**  
-    If any submodule contains its own nested submodules, ensure they are fully initialised:
-    ```bash
-    git submodule update --init --recursive
-
-    # return to the project root before proceeding to on-chain benchmarking or circuit tests
-    cd ../..
-    ```
-    Run this command from the root of each submodule as needed to pull in any nested repositories.
 
 ---
 
@@ -155,11 +134,15 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
 1. **IMT vs MMR Insertion (Heights 12 & 16):**
 
-    ```bash
-    # Height 12
-    npx hardhat run scripts/test1.js --network localhost
+    Height 12
 
-    # Height 16
+    ```bash
+    npx hardhat run scripts/test1.js --network localhost
+    ```
+
+    Height 16
+
+    ```bash
     npx hardhat run scripts/test2.js --network localhost
     ```
 
@@ -169,28 +152,35 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
 
 2. **Deposit & Shielded Transfer Gas Costs (SH-I, SH-M, SH-A):**
 
-    ```bash
-    # SH-I (StealthHub base on IMT, IMT height 31, record first 8 transactions)
+    SH-I (StealthHub base on IMT, IMT height 31, record first 8 transactions)
     
+    ```bash
     # deposit
     npx hardhat run scripts/test3.js --network localhost
-    
+    ```
+    ```bash
     # shielded transfer
     npx hardhat run scripts/test4.js --network localhost
+    ```
+    
+    SH-M (StealthHub base on MMR, record first 2^16 transactions)
 
-    # SH-M (StealthHub base on MMR, record first 2^16 transactions)
-
+    ```bash
     # deposit
     npx hardhat run scripts/test5.js --network localhost
-    
+    ```
+    ```bash
     # shielded transfer
     npx hardhat run scripts/test6.js --network localhost
+    ```
 
-    # SH-A (StealthHub base on off-chain aggregation and MMR, record first 2^16 transactions)
+    SH-A (StealthHub base on off-chain aggregation and MMR, record first 2^16 transactions)
     
+    ```bash
     # deposit
     npx hardhat run scripts/test7.js --network localhost
-    
+    ```
+    ```bash
     # shielded transfer
     npx hardhat run scripts/test8.js --network localhost
     ```
@@ -230,8 +220,8 @@ This executes Mocha/Chai over all files in `test/`, including:
    - `poseidon2.test.js`: Validates the Poseidon2 hash function circuit.  
    - `circom_multi_mt.test.js`: Validate the nested Merkle tree (on-chain tree + off-chain tree) funtions. 
    - `circom_full_1024_const_65537.test.js`: End-to-end test of RSA-based StealthHub flow with a 1024-bit modulus and exponent 65537.
-   - `circom_full_2048_const_65537.test.js`: End-to-end test of RSA-based StealthHub flow with a 2048-bit modulus and exponent 65537.
-   - `circom_full_4096_const_65537.test.js`: End-to-end test of RSA-based StealthHub flow with a 4096-bit modulus and exponent 65537.
+   - `circom_full_2048_const_65537.test.js`: ... with a 2048-bit modulus and exponent 65537.
+   - `circom_full_4096_const_65537.test.js`: ... with a 4096-bit modulus and exponent 65537.
    - `circom_mod_pow.test.js`: Validate the large integer exponentiation functionality (not used in StealthHub, but potentially useful for RSA accumulators). 
 
 Each test suite compiles the corresponding circuit, checks that computed outputs match expected values. Successful tests will result in Mocha reporting “✓” for each suite and “100% passing” overall.
