@@ -185,7 +185,9 @@ Each script under `scripts/` benchmarks a specific scenario. All scripts assume 
     npx hardhat run scripts/test8.js --network localhost
     ```
 
-    - **test3.js** / **test4.js**: SH-I deposit and shielded transfer gas costs for the first 8 transactions (differences become negligible after initial deposits in an IMT of height 31).  
+    - **test3.js** / **test4.js**: SH-I deposit and shielded transfer gas costs for the first 8 transactions (differences become negligible after initial deposits in an IMT of height 31). In the preprint, we deployed the contracts and used the gas result on the testnet  since the costs of insertations are almost constant for IMT, see:
+      - [`0x0abe82f1c6e7df2a9c5c77c7fb3ff5c5ab3408131309dc968d0e61781822faba`](https://testnet.bscscan.com/tx/0x0abe82f1c6e7df2a9c5c77c7fb3ff5c5ab3408131309dc968d0e61781822faba)
+      - [`0x3f55b0ae7c9fbad1bb5083852ff633c985d7f11ee1148b6ddea5ec6ebe02a7aa`](https://testnet.bscscan.com/tx/0x3f55b0ae7c9fbad1bb5083852ff633c985d7f11ee1148b6ddea5ec6ebe02a7aa)
     - **test5.js** / **test6.js**: SH-M deposit and shielded transfer gas costs for the first 2^16 transactions.  
     - **test7.js** / **test8.js**: SH-A deposit and shielded transfer gas costs for the first 2^16 transactions.  
     - See the results above in `Figure 14` and `Table 3` in the preprint.
